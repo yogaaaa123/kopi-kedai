@@ -1,134 +1,134 @@
 [
-  {
-    "id": 1,
-    "name": "Espresso",
-    "description": "Espresso klasik dengan crema sempurna",
-    "price": 25000,
-    "category_id": 1,
-    "image": "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=400",
-    "is_featured": 1,
-    "is_available": 1,
-    "category_name": "Kopi"
-  },
-  {
-    "id": 2,
-    "name": "Cappuccino",
-    "description": "Espresso dengan steamed milk dan foam lembut",
-    "price": 35000,
-    "category_id": 1,
-    "image": "https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=400",
-    "is_featured": 1,
-    "is_available": 1,
-    "category_name": "Kopi"
-  },
-  {
-    "id": 3,
-    "name": "Latte",
-    "description": "Espresso dengan susu hangat dan sedikit foam",
-    "price": 38000,
-    "category_id": 1,
-    "image": "https://images.unsplash.com/photo-1561882468-9110e03e0f78?w=400",
-    "is_featured": 1,
-    "is_available": 1,
-    "category_name": "Kopi"
-  },
-  {
-    "id": 4,
-    "name": "Americano",
-    "description": "Espresso dengan air panas",
-    "price": 28000,
-    "category_id": 1,
-    "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400",
-    "is_featured": 0,
-    "is_available": 1,
-    "category_name": "Kopi"
-  },
-  {
-    "id": 5,
-    "name": "Mocha",
-    "description": "Espresso dengan cokelat dan susu",
-    "price": 42000,
-    "category_id": 1,
-    "image": "https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?w=400",
-    "is_featured": 1,
-    "is_available": 1,
-    "category_name": "Kopi"
-  },
-  {
-    "id": 6,
-    "name": "Caramel Macchiato",
-    "description": "Espresso dengan vanilla dan caramel",
-    "price": 45000,
-    "category_id": 1,
-    "image": "https://images.unsplash.com/photo-1599639957043-f3aa5c986398?w=400",
-    "is_featured": 1,
-    "is_available": 1,
-    "category_name": "Kopi"
-  },
-  {
-    "id": 7,
-    "name": "Green Tea Latte",
-    "description": "Teh hijau premium dengan susu",
-    "price": 35000,
-    "category_id": 2,
-    "image": "https://images.unsplash.com/photo-1515823064-d6e0c04616a7?w=400",
-    "is_featured": 1,
-    "is_available": 1,
-    "category_name": "Teh"
-  },
-  {
-    "id": 8,
-    "name": "Thai Tea",
-    "description": "Teh Thailand dengan susu",
-    "price": 35000,
-    "category_id": 2,
-    "image": "https://images.unsplash.com/photo-1583468323330-9032ad490fed?w=400",
-    "is_featured": 1,
-    "is_available": 1,
-    "category_name": "Teh"
-  },
-  {
-    "id": 9,
-    "name": "Matcha Latte",
-    "description": "Matcha premium Jepang dengan susu",
-    "price": 42000,
-    "category_id": 2,
-    "image": "https://images.unsplash.com/photo-1536013082576-4077eef57de1?w=400",
-    "is_featured": 1,
-    "is_available": 1,
-    "category_name": "Teh"
-  },
-  {
-    "id": 10,
-    "name": "Croissant",
-    "description": "Croissant butter renyah dari oven",
-    "price": 25000,
-    "category_id": 3,
-    "image": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=400",
-    "is_featured": 1,
-    "is_available": 1,
-    "category_name": "Makanan Ringan"
-  },
-  {
-    "id": 11,
-    "name": "Chicken Wings",
-    "description": "Sayap ayam pedas manis",
-    "price": 35000,
-    "category_id": 3,
-    "image": "https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=400",
-    "is_featured": 1,
-    "is_available": 1,
-    "category_name": "Makanan Ringan"
-  },
-  {
-    "id": 12,
-    "name": "Nasi Goreng Spesial",
-    "description": "Nasi goreng dengan telur dan ayam",
-    "price": 45000,
-    "category_id": 4,
-    "image": "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=400",
-    "is_featured": 1,
-    "is_available": 1,
-    "category_name": "Makanan Berat"
-  }
+    {
+        "id": 1,
+        "name": "Espresso",
+        "description": "Espresso klasik dengan crema sempurna",
+        "price": 25000,
+        "category_id": 1,
+        "image": "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=400",
+        "is_featured": 1,
+        "is_available": 1,
+        "category_name": "Kopi"
+    },
+    {
+        "id": 2,
+        "name": "Cappuccino",
+        "description": "Espresso dengan steamed milk dan foam lembut",
+        "price": 35000,
+        "category_id": 1,
+        "image": "https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=400",
+        "is_featured": 1,
+        "is_available": 1,
+        "category_name": "Kopi"
+    },
+    {
+        "id": 3,
+        "name": "Latte",
+        "description": "Espresso dengan susu hangat dan sedikit foam",
+        "price": 38000,
+        "category_id": 1,
+        "image": "https://images.unsplash.com/photo-1561882468-9110e03e0f78?w=400",
+        "is_featured": 1,
+        "is_available": 1,
+        "category_name": "Kopi"
+    },
+    {
+        "id": 4,
+        "name": "Americano",
+        "description": "Espresso dengan air panas",
+        "price": 28000,
+        "category_id": 1,
+        "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400",
+        "is_featured": 0,
+        "is_available": 1,
+        "category_name": "Kopi"
+    },
+    {
+        "id": 5,
+        "name": "Mocha",
+        "description": "Espresso dengan cokelat dan susu",
+        "price": 42000,
+        "category_id": 1,
+        "image": "https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?w=400",
+        "is_featured": 1,
+        "is_available": 1,
+        "category_name": "Kopi"
+    },
+    {
+        "id": 6,
+        "name": "Caramel Macchiato",
+        "description": "Espresso dengan vanilla dan caramel",
+        "price": 45000,
+        "category_id": 1,
+        "image": "https://images.unsplash.com/photo-1599639957043-f3aa5c986398?w=400",
+        "is_featured": 1,
+        "is_available": 1,
+        "category_name": "Kopi"
+    },
+    {
+        "id": 7,
+        "name": "Green Tea Latte",
+        "description": "Teh hijau premium dengan susu",
+        "price": 35000,
+        "category_id": 2,
+        "image": "https://images.unsplash.com/photo-1515823064-d6e0c04616a7?w=400",
+        "is_featured": 1,
+        "is_available": 1,
+        "category_name": "Teh"
+    },
+    {
+        "id": 8,
+        "name": "Thai Tea",
+        "description": "Teh Thailand dengan susu",
+        "price": 35000,
+        "category_id": 2,
+        "image": "https://images.unsplash.com/photo-1583468323330-9032ad490fed?w=400",
+        "is_featured": 1,
+        "is_available": 1,
+        "category_name": "Teh"
+    },
+    {
+        "id": 9,
+        "name": "Matcha Latte",
+        "description": "Matcha premium Jepang dengan susu",
+        "price": 42000,
+        "category_id": 2,
+        "image": "https://images.unsplash.com/photo-1536013082576-4077eef57de1?w=400",
+        "is_featured": 1,
+        "is_available": 1,
+        "category_name": "Teh"
+    },
+    {
+        "id": 10,
+        "name": "Croissant",
+        "description": "Croissant butter renyah dari oven",
+        "price": 25000,
+        "category_id": 3,
+        "image": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=400",
+        "is_featured": 1,
+        "is_available": 1,
+        "category_name": "Makanan Ringan"
+    },
+    {
+        "id": 11,
+        "name": "Chicken Wings",
+        "description": "Sayap ayam pedas manis",
+        "price": 35000,
+        "category_id": 3,
+        "image": "https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=400",
+        "is_featured": 1,
+        "is_available": 1,
+        "category_name": "Makanan Ringan"
+    },
+    {
+        "id": 12,
+        "name": "Nasi Goreng Spesial",
+        "description": "Nasi goreng dengan telur dan ayam",
+        "price": 45000,
+        "category_id": 4,
+        "image": "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=400",
+        "is_featured": 1,
+        "is_available": 1,
+        "category_name": "Makanan Berat"
+    }
 ]

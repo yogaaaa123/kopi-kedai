@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 fetch(`${API_BASE}/categories.json`).then(r => r.json()),
                 fetch(`${API_BASE}/products.json`).then(r => r.json()),
             ]);
-            
+
             categories = categoryData;
             products = productData;
             featuredProducts = products.filter(p => p.is_featured);
@@ -220,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
             products = productData;
             featuredProducts = featuredData;
         }
-        
+
         filteredProducts = [...products];
 
         renderCategories();
@@ -559,12 +559,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     checkoutForm?.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
+
         if (USE_STATIC) {
             showToast('Fitur checkout hanya tersedia saat menjalankan server lokal. Silakan hubungi admin untuk pemesanan.', 'error');
             return;
         }
-        
+
         if (!cart.length) {
             showToast('Keranjang kosong', 'error');
             return;
@@ -708,7 +708,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (banner) banner.style.display = 'none';
             return;
         }
-        
+
         try {
             const res = await fetch(`${API_BASE}/promos/active`);
             if (!res.ok) return;
@@ -735,7 +735,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (container) container.style.display = 'none';
             return;
         }
-        
+
         try {
             const res = await fetch(`${API_BASE}/promos`);
             if (!res.ok) return;
@@ -796,7 +796,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (timerContainer) timerContainer.style.display = 'none';
             return;
         }
-        
+
         try {
             const res = await fetch(`${API_BASE}/promos`);
             if (!res.ok) return;
