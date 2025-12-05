@@ -9,6 +9,17 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
 
+// Serve HTML files from root
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+app.get('/admin.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'admin.html'));
+});
+app.get('/login.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'login.html'));
+});
+
 // In-memory database (simple solution without native dependencies)
 let categories = [];
 let products = [];

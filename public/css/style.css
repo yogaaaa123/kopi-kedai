@@ -451,6 +451,22 @@ ul {
     right: 0;
 }
 
+/* Cart backdrop for mobile */
+.cart-backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1099;
+}
+
+.cart-backdrop.show {
+    display: block;
+}
+
 .cart-header {
     display: flex;
     justify-content: space-between;
@@ -1807,6 +1823,11 @@ ul {
 
     .cart-sidebar {
         width: 100%;
+        right: -100%;
+    }
+
+    .cart-sidebar.show {
+        right: 0;
     }
 
     .modal-content {

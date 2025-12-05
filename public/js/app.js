@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const trackSubmitBtn = document.getElementById('track-submit-btn');
     const trackResult = document.getElementById('track-result');
     const trackError = document.getElementById('track-error');
+    const cartBackdrop = document.getElementById('cart-backdrop');
 
     let categories = [];
     let products = [];
@@ -459,12 +460,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    cartBtn?.addEventListener('click', () => cartSidebar?.classList.add('show'));
-    cartClose?.addEventListener('click', () => cartSidebar?.classList.remove('show'));
+    cartBtn?.addEventListener('click', () => {
+        cartSidebar?.classList.add('show');
+        cartBackdrop?.classList.add('show');
+    });
+
+    cartClose?.addEventListener('click', () => {
+        cartSidebar?.classList.remove('show');
+        cartBackdrop?.classList.remove('show');
+    });
+
+    cartBackdrop?.addEventListener('click', () => {
+        cartSidebar?.classList.remove('show');
+        cartBackdrop?.classList.remove('show');
+    });
 
     document.addEventListener('click', (e) => {
         if (!cartSidebar.contains(e.target) && e.target !== cartBtn && cartSidebar.classList.contains('show')) {
             cartSidebar.classList.remove('show');
+            cartBackdrop?.classList.remove('show');
         }
     });
 
