@@ -1,0 +1,84 @@
+/* Additional Styling for Better Form and Navigation */
+
+/* Fix Contact Form Select - Warna Text Terlihat */
+.contact-form select {
+    color: var(--text) !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+}
+
+.contact-form select option {
+    background: #1a130c !important;
+    color: var(--text) !important;
+    padding: 0.5rem !important;
+}
+
+/* Fix Contact Form Inputs */
+.contact-form input,
+.contact-form textarea {
+    color: var(--text) !important;
+}
+
+/* Form Label dengan Icon */
+.checkout-form .form-group label {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+}
+
+.checkout-form .form-group label i {
+    font-size: 1rem;
+    color: var(--accent);
+    opacity: 0.8;
+}
+
+/* Section Heading dengan Icon */
+.checkout-section h3 {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+}
+
+.checkout-section h3 i {
+    font-size: 1.2rem;
+    color: var(--accent);
+}
+
+/* Better Remove Button in Cart */
+.remove-item {
+    background: rgba(240, 84, 84, 0.15);
+    border: 1px solid rgba(240, 84, 84, 0.3);
+    color: #f05454;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.remove-item:hover {
+    background: rgba(240, 84, 84, 0.25);
+    border-color: #f05454;
+    transform: translateY(-2px);
+}
+
+.remove-item:active {
+    transform: translateY(0);
+}
+
+/* Hamburger Menu Better Interaction */
+.nav-toggle {
+    padding: 0.5rem !important;
+    border-radius: 8px !important;
+    transition: all 0.3s ease !important;
+}
+
+.nav-toggle:hover {
+    background: rgba(210, 156, 92, 0.1) !important;
+    color: var(--accent) !important;
+}
+
+.nav-toggle:active {
+    transform: scale(0.95) !important;
+}

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin - Kopi Nusantara</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/fix-colors.css">
+    <link rel="stylesheet" href="css/admin-products.css">
+</head>
+
+<body>
+    <!-- Auth Check Script -->
+    <script>
+        // Check authentication
+        if (sessionStorage.getItem('adminAuth') !== 'true') {
+            window.location.href = 'login.html';
+        }
+    </script>
+
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <span>☕</span>
+            <h2>Kopi Admin</h2>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#overview" class="nav-link active"><i class="fas fa-th-large"></i> Overview</a>
+            <a href="#categories" class="nav-link"><i class="fas fa-layer-group"></i> Kategori</a>
+            <a href="#products" class="nav-link"><i class="fas fa-coffee"></i> Produk</a>
+            <a href="#orders" class="nav-link">
+                <i class="fas fa-receipt"></i> Pesanan Aktif
+                <span id="new-order-badge" class="badge" style="display:none;">0</span>
+            </a>
+            <a href="#history" class="nav-link"><i class="fas fa-history"></i> Riwayat Selesai</a>
+            <a href="#promos" class="nav-link"><i class="fas fa-percentage"></i> Promo</a>
+            <a href="#" class="nav-link" id="logout-btn" style="margin-top: auto; color: #f05454;">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <div>
+                <h1>Dashboard</h1>
+                <p>Kelola menu, pesanan, dan promo dengan mudah.</p>
+            </div>
+            <button id="refresh-btn"><i class="fas fa-rotate"></i> Refresh</button>
+        </header>
+
+        <section id="overview" class="card-grid stats-grid">
+            <!-- Stats cards insert here -->
+        </section>
+
+        <!-- Overview Products Section -->
+        <section id="overview-products" class="card">
+            <div class="card-header">
+                <div>
+                    <h2>🔥 Semua Produk</h2>
+                    <p>Edit langsung nama, harga, deskripsi, atau hapus produk</p>
+                </div>
+            </div>
+            <div class="products-grid" id="overview-products-grid">
+                <!-- Products will be loaded here -->
+            </div>
+        </section>
+
+        <section id="categories" class="card">
+            <div class="card-header">
+                <div class="card-header">
+                    <div>
+                        <h2>Manajemen Kategori</h2>
+                        <p>Tambah atau update kategori menu.</p>
+                    </div>
+                    <button id="new-category-btn" class="btn">Kategori Baru</button>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nama</th>
+                                <th>Deskripsi</th>
+                                <th>Icon</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="category-table"></tbody>
+                    </table>
+                </div>
+                <form id="category-form" class="form-grid">
+                    <input type="hidden" name="id" id="category-id">
+                    <div>
+                        <label>Nama</label>
+                        <input type="text" name="name" id="category-name" required>
+                    </div>
+                    <div>
+                        <label>Deskripsi</label>
+                        <input type="text" name="description" id="category-description">
+                    </div>
+                    <div>
+                        <label>Icon</label>
+                        <input type="text" name="icon" id="category-icon" placeholder="☕">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Simpan Kategori</button>
+                </form>
+        </section>
+
+        <section id="products" class="card">
+            <div class="card-header">
+                <div>
+                    <h2>Manajemen Produk</h2>
+                    <p>Tambah, ubah, atau hapus produk.</p>
+                </div>
+                <button id="new-product-btn" class="btn">Produk Baru</button>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nama</th>
+                            <th>Kategori</th>
+                            <th>Harga</th>
+                            <th>Featured</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="product-table"></tbody>
+                </table>
+            </div>
+            <form id="product-form" class="form-grid">
+                <input type="hidden" name="id" id="product-id">
+                <div>
+                    <label>Nama Produk</label>
+                    <input type="text" id="product-name" name="name" required>
+                </div>
+                <div>
+                    <label>Deskripsi</label>
+                    <textarea id="product-description" name="description" rows="2"></textarea>
+                </div>
+                <div>
+                    <label>Harga (Rp)</label>
+                    <input type="number" id="product-price" name="price" required>
+                </div>
+                <div>
+                    <label>Kategori</label>
+                    <select id="product-category" name="category_id" required></select>
+                </div>
+                <div>
+                    <label>URL Gambar</label>
+                    <input type="url" id="product-image" name="image">
+                </div>
+                <div>
+                    <label>Featured</label>
+                    <select id="product-featured" name="is_featured">
+                        <option value="0">Tidak</option>
+                        <option value="1">Ya</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Tersedia</label>
+                    <select id="product-available" name="is_available">
+                        <option value="1">Ya</option>
+                        <option value="0">Habis</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Simpan Produk</button>
+            </form>
+        </section>
+
+        <section id="orders" class="card">
+            <div class="card-header">
+                <h2>Pesanan Aktif</h2>
+                <div>
+                    <select id="order-filter">
+                        <option value="">Semua</option>
+                        <option value="pending">Pending</option>
+                        <option value="processing">Processing</option>
+                    </select>
+                </div>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Customer</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                            <th>Dibuat</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="order-table"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="history" class="card">
+            <div class="card-header">
+                <div>
+                    <h2>Riwayat Pesanan Selesai</h2>
+                    <p>Pesanan yang sudah completed atau cancelled</p>
+                </div>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <input type="date" id="history-date" class="date-input">
+                    <button id="filter-today-btn" class="btn btn-sm">Hari Ini</button>
+                </div>
+            </div>
+
+            <div class="stats-summary">
+                <div class="stat-box">
+                    <div class="stat-icon" style="background: rgba(64, 183, 126, 0.15); color: #40b77e;">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div>
+                        <p>Total Pengunjung</p>
+                        <h3 id="daily-visitors">0</h3>
+                    </div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-icon" style="background: rgba(210, 156, 92, 0.15); color: #d29c5c;">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <div>
+                        <p>Pendapatan</p>
+                        <h3 id="daily-revenue">Rp 0</h3>
+                    </div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-icon" style="background: rgba(66, 153, 225, 0.15); color: #4299e1;">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div>
+                        <p>Pesanan Selesai</p>
+                        <h3 id="daily-completed">0</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Customer</th>
+                            <th>Meja</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                            <th>Waktu Selesai</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-table"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="promos" class="card">
+            <div class="card-header">
+                <h2>Kode Promo</h2>
+                <button id="new-promo-btn" class="btn">Promo Baru</button>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Kode</th>
+                            <th>Diskon</th>
+                            <th>Min Order</th>
+                            <th>Timer</th>
+                            <th>Kuota</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="promo-table"></tbody>
+                </table>
+            </div>
+            <form id="promo-form" class="form-grid">
+                <input type="hidden" id="promo-id" name="id">
+                <div>
+                    <label>Kode</label>
+                    <input type="text" id="promo-code" name="code" required>
+                </div>
+                <div>
+                    <label>Diskon (%)</label>
+                    <input type="number" id="promo-percent" name="discount_percent" min="0" max="100">
+                </div>
+                <div>
+                    <label>Diskon (Rp)</label>
+                    <input type="number" id="promo-amount" name="discount_amount" min="0">
+                </div>
+                <div>
+                    <label>Minimal Order (Rp)</label>
+                    <input type="number" id="promo-min" name="min_order" min="0">
+                </div>
+                <div>
+                    <label>Durasi (Jam) <small>Kosongkan jika unlimited</small></label>
+                    <input type="number" id="promo-duration" name="duration_hours" min="1" placeholder="Contoh: 3">
+                </div>
+                <div>
+                    <label>Maks. Penggunaan <small>Kosongkan jika unlimited</small></label>
+                    <input type="number" id="promo-max-uses" name="max_uses" min="1" placeholder="Contoh: 5">
+                </div>
+                <div>
+                    <label>Status</label>
+                    <select id="promo-active" name="is_active">
+                        <option value="1">Aktif</option>
+                        <option value="0">Nonaktif</option>
+                    </select>
+                </div>
+                <div></div>
+                <button type="submit" class="btn btn-primary">Simpan Promo</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Edit Product Modal -->
+    <div id="edit-modal" class="edit-modal">
+        <div class="edit-modal-content">
+            <div class="edit-modal-header">
+                <h3>✏️ Edit Produk</h3>
+                <button class="edit-modal-close" id="edit-modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="edit-product-form">
+                <input type="hidden" id="edit-product-id">
+                <div class="edit-form-group">
+                    <label>Nama Produk</label>
+                    <input type="text" id="edit-product-name" required>
+                </div>
+                <div class="edit-form-group">
+                    <label>Deskripsi</label>
+                    <textarea id="edit-product-desc" rows="3"></textarea>
+                </div>
+                <div class="edit-form-group">
+                    <label>Harga (Rp)</label>
+                    <input type="number" id="edit-product-price" required>
+                </div>
+                <div class="edit-form-group">
+                    <label>Kategori</label>
+                    <select id="edit-product-category" required></select>
+                </div>
+                <div class="edit-form-group">
+                    <label>URL Gambar</label>
+                    <input type="url" id="edit-product-image">
+                </div>
+                <div class="edit-form-group">
+                    <label>Featured</label>
+                    <select id="edit-product-featured">
+                        <option value="0">Tidak</option>
+                        <option value="1">Ya</option>
+                    </select>
+                </div>
+                <div class="edit-form-group">
+                    <label>Status</label>
+                    <select id="edit-product-available">
+                        <option value="1">Tersedia</option>
+                        <option value="0">Tidak Tersedia</option>
+                    </select>
+                </div>
+                <div class="edit-form-actions">
+                    <button type="submit" class="btn-save">
+                        <i class="fas fa-save"></i> Simpan
+                    </button>
+                    <button type="button" class="btn-cancel" id="edit-cancel">
+                        <i class="fas fa-times"></i> Batal
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KOPI NUSANTARA - Premium Coffee Experience</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style-additions.css">
+    <link rel="stylesheet" href="css/fix-colors.css">
+    <link rel="stylesheet" href="css/track-order.css">
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader">
+            <div class="coffee-cup">
+                <div class="steam">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="cup"></div>
+            </div>
+            <p>Menyeduh kebahagiaan...</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="nav-logo">
+                <span class="logo-icon">☕</span>
+                <span class="logo-text">KOPI<span>NUSANTARA</span></span>
+            </a>
+
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link active">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link">Tentang</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#menu" class="nav-link">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#featured" class="nav-link">Unggulan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#testimonials" class="nav-link">Testimoni</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">Kontak</a>
+                    </li>
+                </ul>
+                <div class="nav-close" id="nav-close">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+
+            <div class="nav-actions">
+                <button class="nav-search" id="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="nav-track" id="track-btn" title="Cek Status Pesanan">
+                    <i class="fas fa-receipt"></i>
+                </button>
+                <button class="nav-cart" id="cart-btn">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </button>
+                <div class="nav-toggle" id="nav-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Search Modal -->
+    <div class="search-modal" id="search-modal">
+        <div class="search-content">
+            <button class="search-close" id="search-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <h3>Cari Menu</h3>
+            <div class="search-input-wrapper">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search-input" placeholder="Ketik nama menu...">
+            </div>
+            <div class="search-results" id="search-results"></div>
+        </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-bag"></i> Keranjang Anda</h3>
+            <button class="cart-close" id="cart-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be added here -->
+        </div>
+        <div class="cart-footer">
+            <div class="promo-section">
+                <div class="available-promos" id="available-promos">
+                    <!-- Promo codes will be displayed here -->
+                </div>
+                <div class="promo-code">
+                    <input type="text" id="promo-input" placeholder="Kode Promo">
+                    <button id="apply-promo">Terapkan</button>
+                </div>
+            </div>
+            <div class="cart-discount" id="cart-discount" style="display: none;">
+                <span>Diskon:</span>
+                <span id="discount-amount">-Rp 0</span>
+            </div>
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cart-total">Rp 0</span>
+            </div>
+            <button class="checkout-btn" id="checkout-btn">
+                <i class="fas fa-credit-card"></i> Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <div class="hero-overlay"></div>
+        </div>
+
+        <!-- Promo Banner -->
+        <div id="promo-banner" class="promo-banner" style="display: none;">
+            <div class="promo-banner-content">
+                <div class="promo-icon">🔥</div>
+                <div class="promo-info">
+                    <div class="promo-title" id="promo-banner-title">PROMO TERBATAS!</div>
+                    <div class="promo-details">
+                        <span id="promo-banner-code" class="promo-code-highlight">KODE</span>
+                        <span id="promo-banner-discount">20% OFF</span>
+                        <span class="promo-separator">•</span>
+                        <span id="promo-banner-quota">5 orang pertama</span>
+                    </div>
+                </div>
+                <div class="promo-timer">
+                    <i class="fas fa-clock"></i>
+                    <span id="promo-banner-timer">3:00:00</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-content container">
+            <div class="hero-data">
+                <span class="hero-subtitle">☕ Premium Coffee Experience</span>
+                <h1 class="hero-title">
+                    Nikmati <span class="highlight">Kopi Terbaik</span>
+                    dari Nusantara
+                </h1>
+                <p class="hero-description">
+                    Rasakan sensasi kopi premium pilihan dari berbagai daerah di Indonesia.
+                    Setiap cangkir adalah cerita, setiap tegukan adalah petualangan.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#menu" class="btn btn-primary">
+                        <i class="fas fa-coffee"></i> Lihat Menu
+                    </a>
+                    <a href="#about" class="btn btn-outline">
+                        <i class="fas fa-play-circle"></i> Cerita Kami
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-text">Tahun Pengalaman</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">50K+</span>
+                        <span class="stat-text">Pelanggan Puas</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100+</span>
+                        <span class="stat-text">Menu Spesial</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600" alt="Premium Coffee">
+                    <div class="floating-card card-1">
+                        <span class="card-icon">⭐</span>
+                        <div class="card-info">
+                            <span class="card-number">4.9</span>
+                            <span class="card-text">Rating</span>
+                        </div>
+                    </div>
+                    <div class="floating-card card-2">
+                        <span class="card-icon">🏆</span>
+                        <div class="card-info">
+                            <span class="card-number">#1</span>
+                            <span class="card-text">Best Coffee</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <a href="#about">
+                <div class="mouse"></div>
+                <span>Scroll Down</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about section" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-images">
+                    <div class="about-img-main">
+                        <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=500" alt="Coffee Shop">
+                    </div>
+                    <div class="about-img-secondary">
+                        <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=300" alt="Barista">
+                    </div>
+                    <div class="experience-badge">
+                        <span class="exp-number">15</span>
+                        <span class="exp-text">Tahun<br>Pengalaman</span>
+                    </div>
+                </div>
+                <div class="about-data">
+                    <span class="section-subtitle">✨ Tentang Kami</span>
+                    <h2 class="section-title">Warisan Cita Rasa<br><span class="highlight">Kopi Nusantara</span></h2>
+                    <p class="about-description">
+                        Kopi Nusantara lahir dari kecintaan mendalam terhadap kopi Indonesia.
+                        Sejak 2009, kami berkomitmen menghadirkan pengalaman kopi premium dengan
+                        biji kopi terbaik dari Aceh, Toraja, Flores, hingga Papua.
+                    </p>
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>100% Organik</h4>
+                                <p>Biji kopi organik tanpa pestisida</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Kualitas Premium</h4>
+                                <p>Dipilih dari perkebunan terbaik</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Diseduh dengan Cinta</h4>
+                                <p>Barista profesional berpengalaman</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#menu" class="btn btn-primary">
+                        Jelajahi Menu <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">🍽️ Kategori</span>
+                <h2 class="section-title">Pilihan Menu <span class="highlight">Favorit</span></h2>
+            </div>
+            <div class="categories-grid" id="categories-grid">
+                <!-- Categories will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu section" id="menu">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">☕ Menu Kami</span>
+                <h2 class="section-title">Menu <span class="highlight">Terlengkap</span></h2>
+                <p class="section-description">
+                    Jelajahi berbagai pilihan kopi, teh, makanan, dan dessert premium kami
+                </p>
+            </div>
+
+            <div class="menu-filters" id="menu-filters">
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fas fa-th-large"></i> Semua
+                </button>
+                <!-- Filter buttons will be loaded dynamically -->
+            </div>
+
+            <div class="menu-grid" id="menu-grid">
+                <!-- Products will be loaded here -->
+            </div>
+
+            <div class="menu-load-more">
+                <button class="btn btn-outline" id="load-more">
+                    Lihat Semua Menu <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Section -->
+    <section class="featured section" id="featured">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">⭐ Unggulan</span>
+                <h2 class="section-title">Menu <span class="highlight">Terlaris</span></h2>
+            </div>
+            <div class="featured-grid" id="featured-grid">
+                <!-- Featured products will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offer Section -->
+    <section class="special-offer">
+        <div class="container">
+            <div class="offer-content">
+                <div class="offer-data">
+                    <span class="offer-badge">🎉 Promo Spesial</span>
+                    <h2 class="offer-title" id="offer-title">Diskon untuk<br><span class="highlight">Pelanggan!</span>
+                    </h2>
+                    <p class="offer-description" id="offer-description">
+                        Gunakan kode promo di bawah ini saat checkout untuk mendapatkan diskon spesial!
+                    </p>
+                    <div id="offer-promos" class="offer-promos">
+                        <!-- Promo codes will be displayed here -->
+                    </div>
+                    <div class="offer-timer" id="offer-timer" style="display: none;">
+                        <div class="timer-item">
+                            <span class="timer-number" id="offer-days">00</span>
+                            <span class="timer-text">Hari</span>
+                        </div>
+                        <div class="timer-item">
+                            <span class="timer-number" id="offer-hours">00</span>
+                            <span class="timer-text">Jam</span>
+                        </div>
+                        <div class="timer-item">
+                            <span class="timer-number" id="offer-minutes">00</span>
+                            <span class="timer-text">Menit</span>
+                        </div>
+                        <div class="timer-item">
+                            <span class="timer-number" id="offer-seconds">00</span>
+                            <span class="timer-text">Detik</span>
+                        </div>
+                    </div>
+                    <a href="#menu" class="btn btn-light">
+                        Pesan Sekarang <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="offer-image">
+                    <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=600" alt="Special Offer">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials section" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">💬 Testimoni</span>
+                <h2 class="section-title">Apa Kata <span class="highlight">Pelanggan</span></h2>
+            </div>
+            <div class="testimonials-slider">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Kopi terbaik yang pernah saya rasakan! Aromanya sangat khas dan rasanya
+                        benar-benar premium. Pelayanannya juga sangat ramah."
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100" alt="Customer">
+                        <div class="author-info">
+                            <h4>Sari Dewi</h4>
+                            <span>Coffee Enthusiast</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Tempat favorit saya untuk WFC (Work From Cafe). Suasananya nyaman,
+                        WiFi kencang, dan menu makanannya juga enak-enak!"
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100" alt="Customer">
+                        <div class="author-info">
+                            <h4>Budi Santoso</h4>
+                            <span>Freelancer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Tiramisu dan cappuccino mereka adalah kombinasi sempurna!
+                        Sudah jadi langganan tetap sejak 3 tahun lalu."
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100" alt="Customer">
+                        <div class="author-info">
+                            <h4>Maya Putri</h4>
+                            <span>Food Blogger</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">📸 Galeri</span>
+                <h2 class="section-title">Momen <span class="highlight">Berharga</span></h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item large">
+                    <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=600" alt="Gallery">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=400" alt="Gallery">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?w=400" alt="Gallery">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400" alt="Gallery">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="gallery-item tall">
+                    <img src="https://images.unsplash.com/photo-1507133750040-4a8f57021571?w=400" alt="Gallery">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact section" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <span class="section-subtitle">📍 Kontak</span>
+                    <h2 class="section-title">Hubungi <span class="highlight">Kami</span></h2>
+                    <p class="contact-description">
+                        Punya pertanyaan atau ingin reservasi? Jangan ragu untuk menghubungi kami.
+                    </p>
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-data">
+                                <h4>Alamat</h4>
+                                <p>Jl. Kopi Premium No. 123<br>Jakarta Selatan, 12345</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-data">
+                                <h4>Telepon</h4>
+                                <p>+62 812 3456 7890</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-data">
+                                <h4>Email</h4>
+                                <p>hello@kopinusantara.id</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-data">
+                                <h4>Jam Operasional</h4>
+                                <p>Senin - Minggu<br>08:00 - 22:00 WIB</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-socials">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Nama Lengkap</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telepon</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subjek</label>
+                            <select id="subject" name="subject">
+                                <option value="">Pilih Subjek</option>
+                                <option value="reservation">Reservasi</option>
+                                <option value="catering">Catering</option>
+                                <option value="partnership">Kerjasama</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="other">Lainnya</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Pesan</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-paper-plane"></i> Kirim Pesan
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-data">
+                    <h3>Dapatkan Update Terbaru</h3>
+                    <p>Subscribe untuk mendapatkan promo dan menu terbaru!</p>
+                </div>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Masukkan email Anda">
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#" class="footer-logo">
+                        <span class="logo-icon">☕</span>
+                        <span class="logo-text">KOPI<span>NUSANTARA</span></span>
+                    </a>
+                    <p class="footer-description">
+                        Menghadirkan pengalaman kopi premium terbaik dari berbagai daerah di Indonesia.
+                        Setiap cangkir adalah cerita.
+                    </p>
+                    <div class="footer-socials">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Menu Cepat</h4>
+                    <ul>
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#about">Tentang Kami</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#testimonials">Testimoni</a></li>
+                        <li><a href="#contact">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Kategori</h4>
+                    <ul>
+                        <li><a href="#">Kopi</a></li>
+                        <li><a href="#">Teh</a></li>
+                        <li><a href="#">Makanan</a></li>
+                        <li><a href="#">Dessert</a></li>
+                        <li><a href="#">Minuman</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Informasi</h4>
+                    <ul>
+                        <li><a href="#">Tentang Kami</a></li>
+                        <li><a href="#">Kebijakan Privasi</a></li>
+                        <li><a href="#">Syarat & Ketentuan</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Karir</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Kopi Nusantara. All Rights Reserved.</p>
+                <div class="payment-methods">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/200px-Visa_Inc._logo.svg.png"
+                        alt="Visa">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/MasterCard_Logo.svg/200px-MasterCard_Logo.svg.png"
+                        alt="Mastercard">
+                    <i class="fas fa-wallet" title="E-Wallet"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Product Detail Modal -->
+    <div class="modal" id="product-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body" id="modal-body">
+                <!-- Product details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkout-modal">
+        <div class="modal-content modal-large">
+            <button class="modal-close" id="checkout-modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="checkout-wrapper">
+                <div class="checkout-header">
+                    <h2><i class="fas fa-shopping-cart"></i> Checkout</h2>
+                </div>
+                <form id="checkout-form" class="checkout-form">
+                    <div class="checkout-section">
+                        <h3><i class="fas fa-user"></i> Informasi Pelanggan</h3>
+                        <div class="form-group">
+                            <label for="checkout-name"><i class="fas fa-user-circle"></i> Nama Pelanggan *</label>
+                            <input type="text" id="checkout-name" name="customer_name" placeholder="Masukkan nama Anda"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkout-table"><i class="fas fa-chair"></i> Nomor Meja *</label>
+                            <input type="text" id="checkout-table" name="table_number"
+                                placeholder="Contoh: A1, B2, 5, dll." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkout-notes"><i class="fas fa-sticky-note"></i> Catatan Tambahan</label>
+                            <textarea id="checkout-notes" name="notes" rows="3"
+                                placeholder="Misalnya: tidak pedas, tanpa es, gula sedikit, dll."></textarea>
+                        </div>
+                    </div>
+                    <div class="checkout-section">
+                        <h3><i class="fas fa-receipt"></i> Ringkasan Pesanan</h3>
+                        <div class="checkout-items" id="checkout-items">
+                            <!-- Items will be loaded here -->
+                        </div>
+                        <div class="checkout-summary">
+                            <div class="summary-row">
+                                <span>Subtotal</span>
+                                <span id="checkout-subtotal">Rp 0</span>
+                            </div>
+                            <div class="summary-row" id="checkout-discount-row" style="display: none;">
+                                <span>Diskon</span>
+                                <span id="checkout-discount">-Rp 0</span>
+                            </div>
+                            <div class="summary-row total">
+                                <span>Total</span>
+                                <span id="checkout-total">Rp 0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full btn-lg">
+                        <i class="fas fa-check-circle"></i> Konfirmasi Pesanan
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="success-modal">
+        <div class="modal-content modal-medium">
+            <div class="success-content">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2>Pesanan Berhasil!</h2>
+                <p>Terima kasih telah memesan di Kopi Nusantara.</p>
+                <p class="order-id">Order ID: <strong id="order-id">#12345</strong></p>
+
+                <div class="payment-section">
+                    <h3>💳 Pembayaran</h3>
+                    <p class="text-muted">Scan QR Code di bawah untuk melakukan pembayaran</p>
+
+                    <div class="qr-container">
+                        <canvas id="qr-canvas"></canvas>
+                    </div>
+
+                    <div class="payment-info">
+                        <div class="info-row">
+                            <span>Nama:</span>
+                            <strong id="payment-name">-</strong>
+                        </div>
+                        <div class="info-row">
+                            <span>Meja:</span>
+                            <strong id="payment-table">-</strong>
+                        </div>
+                        <div class="info-row">
+                            <span>Total Bayar:</span>
+                            <strong id="payment-total" class="highlight">Rp 0</strong>
+                        </div>
+                    </div>
+
+                    <p class="payment-note">
+                        <i class="fas fa-info-circle"></i>
+                        Setelah pembayaran berhasil, pesanan Anda akan segera diproses oleh kasir.
+                    </p>
+                </div>
+
+                <!-- Rating Section -->
+                <div class="rating-section">
+                    <h3>⭐ Berikan Rating</h3>
+                    <p class="text-muted">Bagaimana pengalaman Anda?</p>
+                    <div class="stars-container" id="stars-container">
+                        <i class="fas fa-star star" data-rating="1"></i>
+                        <i class="fas fa-star star" data-rating="2"></i>
+                        <i class="fas fa-star star" data-rating="3"></i>
+                        <i class="fas fa-star star" data-rating="4"></i>
+                        <i class="fas fa-star star" data-rating="5"></i>
+                    </div>
+                    <p class="rating-text" id="rating-text">Minimal rating: 4 bintang</p>
+                </div>
+
+                <button class="btn btn-primary" id="success-close">Kembali ke Menu</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Track Order Modal -->
+    <div class="modal" id="track-modal">
+        <div class="modal-content modal-medium">
+            <button class="modal-close" id="track-modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="track-content">
+                <h2>📦 Cek Status Pesanan</h2>
+                <p class="text-muted">Masukkan Order ID untuk melihat status pesanan Anda</p>
+
+                <div class="track-input-wrapper">
+                    <input type="text" id="track-input" placeholder="Contoh: 1, 2, 3, dst." />
+                    <button class="btn btn-primary" id="track-submit-btn">
+                        <i class="fas fa-search"></i> Cek Status
+                    </button>
+                </div>
+
+                <div id="track-result" class="track-result" style="display: none;">
+                    <div class="order-status-card">
+                        <div class="order-status-header">
+                            <h3>Order #<span id="result-order-id">-</span></h3>
+                            <span class="status-badge" id="result-status">-</span>
+                        </div>
+
+                        <div class="order-details">
+                            <div class="detail-row">
+                                <span>Nama:</span>
+                                <strong id="result-name">-</strong>
+                            </div>
+                            <div class="detail-row">
+                                <span>Meja:</span>
+                                <strong id="result-table">-</strong>
+                            </div>
+                            <div class="detail-row">
+                                <span>Total:</span>
+                                <strong id="result-total" class="highlight">-</strong>
+                            </div>
+                            <div class="detail-row">
+                                <span>Waktu Pesan:</span>
+                                <strong id="result-time">-</strong>
+                            </div>
+                            <div class="detail-row">
+                                <span>Catatan:</span>
+                                <strong id="result-notes">-</strong>
+                            </div>
+                        </div>
+
+                        <div class="order-items" id="result-items">
+                            <!-- Items will be loaded here -->
+                        </div>
+
+                        <div class="status-timeline">
+                            <div class="timeline-item" id="status-pending">
+                                <div class="timeline-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="timeline-content">
+                                    <h4>Menunggu</h4>
+                                    <p>Pesanan menunggu konfirmasi</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item" id="status-processing">
+                                <div class="timeline-icon">
+                                    <i class="fas fa-spinner"></i>
+                                </div>
+                                <div class="timeline-content">
+                                    <h4>Diproses</h4>
+                                    <p>Pesanan sedang disiapkan</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item" id="status-completed">
+                                <div class="timeline-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="timeline-content">
+                                    <h4>Selesai</h4>
+                                    <p>Pesanan telah selesai</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="track-error" class="track-error" style="display: none;">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <p>Order tidak ditemukan. Pastikan Order ID benar.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top -->
+    <a href="#" class="back-to-top" id="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+/* Fix All White Text Issues - Warna Text Terlihat */
+
+/* Smooth Scroll Enhancement */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 100px;
+    }
+
+    * {
+        scroll-margin-top: 100px;
+    }
+}
+
+/* Fix Contact Form Select */
+.contact-form select {
+    color: var(--text) !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+}
+
+.contact-form select option {
+    background: #1a130c !important;
+    color: var(--text) !important;
+    padding: 0.5rem !important;
+}
+
+/* Fix Contact Form Inputs */
+.contact-form input,
+.contact-form textarea {
+    color: var(--text) !important;
+}
+
+/* Fix Admin Select/Option - Warna Text Terlihat */
+.form-grid select {
+    color: #fff !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+}
+
+.form-grid select option {
+    background: #0b0a09 !important;
+    color: #fff !important;
+    padding: 0.5rem !important;
+}
+
+/* Fix Status Badge di Table - Text Jelas Terlihat */
+.status-badge {
+    padding: 0.4rem 0.9rem !important;
+    border-radius: 999px !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    display: inline-block !important;
+}
+
+.status-pending {
+    background: rgba(255, 193, 7, 0.2) !important;
+    color: #ffc107 !important;
+    border: 1px solid rgba(255, 193, 7, 0.4) !important;
+}
+
+.status-processing {
+    background: rgba(33, 150, 243, 0.2) !important;
+    color: #2196f3 !important;
+    border: 1px solid rgba(33, 150, 243, 0.4) !important;
+}
+
+.status-completed {
+    background: rgba(76, 175, 80, 0.2) !important;
+    color: #4caf50 !important;
+    border: 1px solid rgba(76, 175, 80, 0.4) !important;
+}
+
+.status-cancelled {
+    background: rgba(244, 67, 54, 0.2) !important;
+    color: #f44336 !important;
+    border: 1px solid rgba(244, 67, 54, 0.4) !important;
+}
+
+/* Fix Table Text in Admin */
+table tbody td {
+    color: #e8e6e3 !important;
+}
+
+/* Fix All Input, Select, Textarea in Admin */
+.form-grid input,
+.form-grid textarea {
+    color: #fff !important;
+}
