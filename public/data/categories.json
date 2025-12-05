@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Kopi",
+    "description": "Berbagai jenis kopi pilihan",
+    "icon": "☕"
+  },
+  {
+    "id": 2,
+    "name": "Teh",
+    "description": "Teh premium dari berbagai daerah",
+    "icon": "🍵"
+  },
+  {
+    "id": 3,
+    "name": "Makanan Ringan",
+    "description": "Snack dan cemilan lezat",
+    "icon": "🍪"
+  },
+  {
+    "id": 4,
+    "name": "Makanan Berat",
+    "description": "Menu utama yang mengenyangkan",
+    "icon": "🍜"
+  }
+]

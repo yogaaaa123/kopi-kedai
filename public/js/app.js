@@ -1,7 +1,9 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const API_BASE = '/api';
+    // Use JSON files for GitHub Pages (static hosting)
+    const API_BASE = window.location.hostname === 'localhost' ? '/api' : '/kopi-kedai/public/data';
+    const USE_STATIC = window.location.hostname !== 'localhost';
 
     const preloader = document.getElementById('preloader');
     const navMenu = document.getElementById('nav-menu');
@@ -196,15 +198,29 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const loadInitialData = async () => {
-        const [categoryData, productData, featuredData] = await Promise.all([
-            fetchData('/categories'),
-            fetchData('/products'),
-            fetchData('/products?featured=true'),
-        ]);
+        if (USE_STATIC) {
+            // Load from JSON files for GitHub Pages
+            const [categoryData, productData] = await Promise.all([
+                fetch(`${API_BASE}/categories.json`).then(r => r.json()),
+                fetch(`${API_BASE}/products.json`).then(r => r.json()),
+            ]);
+            
+            categories = categoryData;
+            products = productData;
+            featuredProducts = products.filter(p => p.is_featured);
+        } else {
+            // Load from API for local development
+            const [categoryData, productData, featuredData] = await Promise.all([
+                fetchData('/categories'),
+                fetchData('/products'),
+                fetchData('/products?featured=true'),
+            ]);
 
-        categories = categoryData;
-        products = productData;
-        featuredProducts = featuredData;
+            categories = categoryData;
+            products = productData;
+            featuredProducts = featuredData;
+        }
+        
         filteredProducts = [...products];
 
         renderCategories();
@@ -543,6 +559,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     checkoutForm?.addEventListener('submit', async (e) => {
         e.preventDefault();
+        
+        if (USE_STATIC) {
+            showToast('Fitur checkout hanya tersedia saat menjalankan server lokal. Silakan hubungi admin untuk pemesanan.', 'error');
+            return;
+        }
+        
         if (!cart.length) {
             showToast('Keranjang kosong', 'error');
             return;
@@ -680,6 +702,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let promoTimerInterval = null;
 
     async function loadActivePromos() {
+        if (USE_STATIC) {
+            // Hide promo banner for static hosting
+            const banner = document.getElementById('promo-banner');
+            if (banner) banner.style.display = 'none';
+            return;
+        }
+        
         try {
             const res = await fetch(`${API_BASE}/promos/active`);
             if (!res.ok) return;
@@ -700,6 +729,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function loadAvailablePromosInCart() {
+        if (USE_STATIC) {
+            // Hide promo section for static hosting
+            const container = document.getElementById('available-promos');
+            if (container) container.style.display = 'none';
+            return;
+        }
+        
         try {
             const res = await fetch(`${API_BASE}/promos`);
             if (!res.ok) return;
@@ -752,6 +788,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function loadSpecialOfferPromos() {
+        if (USE_STATIC) {
+            // Hide special offer promos for static hosting
+            const container = document.getElementById('offer-promos');
+            const timerContainer = document.getElementById('offer-timer');
+            if (container) container.innerHTML = '<p style="color: var(--text-muted);">Hubungi kami untuk info promo terbaru!</p>';
+            if (timerContainer) timerContainer.style.display = 'none';
+            return;
+        }
+        
         try {
             const res = await fetch(`${API_BASE}/promos`);
             if (!res.ok) return;
